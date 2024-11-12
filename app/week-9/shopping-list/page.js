@@ -6,9 +6,16 @@ import NewItem from "./new-item";
 import ItemsData from "./items.json";
 import { useState } from "react";
 import MealIdeas from "./meal-ideas";
+import { useUserAuth } from "../_utils/auth-context";
 
 
 export default function Page(){
+
+    const { user } = useUserAuth();
+
+    if (!user) {
+      return <div>Unauthorized</div>;
+    }
     
     const [items, setitems] = useState (ItemsData);
 
